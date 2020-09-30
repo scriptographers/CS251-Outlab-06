@@ -1,4 +1,9 @@
-# Outlab06
+# Outlab 05 (CS251 Autumn 2020)
+
+Given on: 27th September (Sunday).  
+Deadline: 23:59, 17th October September (Saturday).
+
+***
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
 

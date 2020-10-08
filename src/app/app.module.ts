@@ -7,9 +7,14 @@ import { HeaderComponent } from './header/header.component';
 import { FormComponent } from './form/form.component';
 import { ContactComponent } from './contact/contact.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+
+// Material Modules
+import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
+    MatCardModule,
+    MatTableModule,
+    MatDividerModule,
     BrowserAnimationsModule
   ],
   providers: [],

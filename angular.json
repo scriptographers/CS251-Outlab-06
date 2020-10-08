@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "Outlab06"
+  "defaultProject": "Outlab06",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,13 +1,29 @@
 <p>Name:
-  <input [(ngModel)]="name" placeholder="name" />
+  <input type="text" [(ngModel)]="form_data.name" placeholder="name" />
 </p>
-<p>Email: </p>
-<p>Feedback: </p>
-<p>Comments: </p>
+<p>Email:
+  <input type="text" [(ngModel)]="form_data.email" placeholder="email" />
+</p>
+<p>Feedback:
+  <input type="radio" [(ngModel)]="form_data.feedback" value="Great">Great
+  <input type="radio" [(ngModel)]="form_data.feedback" value="Okay">Okay
+  <input type="radio" [(ngModel)]="form_data.feedback" value="Not good">Not good
+</p>
+<p>Comments:
+  <textarea [(ngModel)]="form_data.comments" placeholder="comments"></textarea>
+</p>
 
 <br>
 
-<p>Name: </p>
-<p>Email: </p>
-<p>Feedback: </p>
-<p>Comments: </p>
+<p>Name: {{view_data.name}}</p>
+<p>Email: {{view_data.email}}</p>
+<p>Feedback: {{view_data.feedback}}</p>
+<p>Comments: {{view_data.comments}}</p>
+
+<br>
+
+This would be removed later, just for debugging
+<p>Name: {{form_data.name}}</p>
+<p>Email: {{form_data.email}}</p>
+<p>Feedback: {{form_data.feedback}}</p>
+<p>Comments: {{form_data.comments}}</p>

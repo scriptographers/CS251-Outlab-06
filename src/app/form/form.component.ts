@@ -27,8 +27,12 @@ export class FormComponent implements OnInit {
 
     this.fs.getInit()
       .subscribe(data => {
-        this.view_data = this.form_data = data;
-        this.form.setValue(this.form_data);
+        this.form_data = data;
+        // console.log(this.form_data)
+        if (this.form_data) {
+          this.form.setValue(this.form_data);
+          this.view_data = this.form_data;
+        }
       });
   }
 

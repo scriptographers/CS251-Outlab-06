@@ -14,17 +14,22 @@ export class FormComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private fs: FormService) {
-    this.form_data = { name: 'a', email: 'a', feedback: 'a', comments: 'a' };
-    this.view_data = { name: 'a', email: 'a', feedback: 'a', comments: 'a' };
+    this.view_data = { name: '', email: '', feedback: '', comment: '' };
   }
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['a'],
-      email: ['a', Validators.email],
-      feedback: ['Okay'],
-      comments: ['a']
+      name: [''],
+      email: ['', Validators.email],
+      feedback: [''],
+      comment: ['']
     });
+
+    this.fs.getInit()
+      .subscribe(data => {
+        this.view_data = this.form_data = data;
+        this.form.setValue(this.form_data);
+      });
   }
 
   onSubmit() {
@@ -32,7 +37,7 @@ export class FormComponent implements OnInit {
     console.log('Name', this.form.value.name);
     console.log('Email', this.form.value.email);
     console.log('Feedback', this.form.value.feedback);
-    console.log('Comments', this.form.value.comments);
+    console.log('Comments', this.form.value.comment);
   }
 
 }

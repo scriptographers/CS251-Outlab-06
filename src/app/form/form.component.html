@@ -1,28 +1,79 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  Value: {{ form.value | json }}
-  <p>Name:
-    <input type="text" formControlName="name" placeholder="name" />
-  </p>
-  <p>Email:
-    <input type="text" formControlName="email" placeholder="email" />
-  </p>
-  <p>Feedback:
-    <input type="radio" formControlName="feedback" value="Great">Great
-    <input type="radio" formControlName="feedback" value="Okay">Okay
-    <input type="radio" formControlName="feedback" value="Not good">Not good
-  </p>
-  <p>Comments:
-    <textarea formControlName="comment" placeholder="comment"></textarea>
-  </p>
-  <button type="submit">Submit</button>
+  <!-- Value: {{ form.value | json }} -->
+  <mat-card>
+    <div>
+
+      <div class="mat-display-1">Feedback Form</div>
+      <mat-divider></mat-divider>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" placeholder="name" />
+      </mat-form-field>
+      
+      <br>
+      <mat-divider></mat-divider>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="email" />
+      </mat-form-field>
+
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+
+      <div style="margin-bottom: 0.6em;">Feedback:</div>
+      <mat-radio-group formControlName="feedback">
+        <mat-radio-button value="Great">Great</mat-radio-button>
+        <br>
+        <mat-radio-button value="Okay">Okay</mat-radio-button>
+        <br>
+        <mat-radio-button value="Not Good">Not Good</mat-radio-button>
+      </mat-radio-group>
+
+      <br>
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+
+      <mat-form-field>
+        <mat-label>Comments</mat-label>
+        <textarea matInput formControlName="comment" placeholder="comment"></textarea>
+      </mat-form-field>
+
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+
+    </div>
+  </mat-card>
 
 </form>
 
-<br>
-
-<p>Name: {{view_data.name}}</p>
-<p>Email: {{view_data.email}}</p>
-<p>Feedback: {{view_data.feedback}}</p>
-<p>Comments: {{view_data.comment}}</p>
+<mat-card style="margin-bottom: 5em;">
+  <div class="mat-display-1">View Data</div>
+  <mat-divider></mat-divider>
+  <br>
+  Name: {{view_data.name}}
+  <br>
+  <br>
+  <mat-divider></mat-divider>
+  <br>
+  Email: {{view_data.email}}
+  <br>
+  <br>
+  <mat-divider></mat-divider>
+  <br>
+  Feedback: {{view_data.feedback}}
+  <br>
+  <br>
+  <mat-divider></mat-divider>
+  <br>
+  Comments: <br>
+  {{view_data.comment}}
+</mat-card>
 
 <br>

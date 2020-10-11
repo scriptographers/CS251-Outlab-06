@@ -13,7 +13,7 @@ export class FormComponent implements OnInit {
   view_data: Data;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private fs: FormService) {
+  constructor(private fb: FormBuilder, private fs: FormService) { // injecting the service
     this.view_data = { name: '', email: '', feedback: '', comment: '' };
   }
 
@@ -36,13 +36,14 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
+    // returns an Observable, asynchronously
     this.fs.sendData({
       name: this.form.value.name,
       email: this.form.value.email,
       feedback: this.form.value.feedback,
       comment: this.form.value.comment
     }).subscribe(data => {
-      this.view_data = data;
+      this.view_data = data; // population of view_data
     });
   }
 

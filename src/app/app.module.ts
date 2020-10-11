@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatTableModule,
     MatDividerModule,
     MatFormFieldModule,
+    MatInputModule,
     MatRadioModule
   ],
   providers: [],

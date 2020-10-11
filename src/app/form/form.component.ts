@@ -28,7 +28,6 @@ export class FormComponent implements OnInit {
     this.fs.getInit()
       .subscribe(data => {
         this.form_data = data;
-        // console.log(this.form_data)
         if (this.form_data) {
           this.form.setValue(this.form_data);
           this.view_data = this.form_data;
@@ -37,11 +36,14 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Valid?', this.form.valid); // true or false
-    console.log('Name', this.form.value.name);
-    console.log('Email', this.form.value.email);
-    console.log('Feedback', this.form.value.feedback);
-    console.log('Comments', this.form.value.comment);
+    this.fs.sendData({
+      name: this.form.value.name,
+      email: this.form.value.email,
+      feedback: this.form.value.feedback,
+      comment: this.form.value.comment
+    }).subscribe(data => {
+      this.view_data = data;
+    });
   }
 
 }

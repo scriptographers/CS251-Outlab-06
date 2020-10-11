@@ -27,11 +27,19 @@ export class FormService {
       );
   }
 
+  sendData(data: Data): Observable<Data> {
+    return this.http.post<Data>(this.post_url, data, this.httpOptions)
+      .pipe(
+        // tap(_ => console.log('posted data')),
+        catchError(this.handleError<Data>())
+      )
+  }
+
   private handleError<T>(result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      console.log(error); // log to console instead
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Data } from '../form-data';
 import { FormService } from '../form.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form',
@@ -9,11 +10,13 @@ import { FormService } from '../form.service';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+
   form_data: Data;
   view_data: Data;
   form: FormGroup;
+  subSuccess: Boolean = false;
 
-  constructor(private fb: FormBuilder, private fs: FormService) { // injecting the service
+  constructor(private fb: FormBuilder, private fs: FormService, private snackBar: MatSnackBar) { // injecting the service
     this.view_data = { name: '', email: '', feedback: '', comment: '' };
   }
 
@@ -35,6 +38,12 @@ export class FormComponent implements OnInit {
       });
   }
 
+  openSnackBar(action: string) {
+    this.snackBar.open("Submission successful", action, {
+      duration: 2000,
+    });
+  }
+
   onSubmit() {
     // returns an Observable, asynchronously if the form is valid
     if (this.form.valid) {
@@ -45,6 +54,8 @@ export class FormComponent implements OnInit {
         comment: this.form.value.comment
       }).subscribe(data => {
         this.view_data = data; // population of view_data
+        this.subSuccess = true;
+        this.openSnackBar("Done");
       });
     }
   }

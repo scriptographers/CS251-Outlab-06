@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.email, Validators.required]],
+      email: ['', [Validators.email, Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       feedback: ['', [Validators.required]],
       comment: ['', []]
     });

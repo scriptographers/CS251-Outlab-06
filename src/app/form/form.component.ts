@@ -19,10 +19,10 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: [''],
-      email: ['', Validators.email],
-      feedback: [''],
-      comment: ['']
+      name: ['', [Validators.required]],
+      email: ['', [Validators.email, Validators.required]],
+      feedback: ['', [Validators.required]],
+      comment: ['', []]
     });
 
     this.fs.getInit()

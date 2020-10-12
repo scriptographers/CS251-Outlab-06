@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 30000,
+      duration: 60000, // 1 min timeout
     });
   }
 

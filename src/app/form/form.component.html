@@ -5,7 +5,9 @@
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <!-- Value: {{ form.value | json }} -->
         <div>
-          <div class="mat-display-1">Feedback Form</div>
+          <div class="mat-display-1">
+            <span>Feedback Form</span>
+          </div>
           <mat-divider></mat-divider>
 
           <mat-form-field appearance="standard">
@@ -62,7 +64,7 @@
           <mat-divider></mat-divider>
           <br>
 
-          <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
+          <button style="margin-bottom: 1em;" type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
         </div>
       </form>
     </mat-card>
@@ -70,26 +72,36 @@
 
   <mat-grid-tile colspan="4">
     <mat-card style="max-width: 100%;">
-      <div class="mat-display-1">View Data</div>
+
+      <div class="mat-display-1">
+        View Data
+      </div>
+
       <mat-divider></mat-divider>
-      <br>
-      Name: {{view_data.name}}
-      <br>
-      <br>
+
+      <div class="data_view">
+        Name: {{view_data.name}}
+      </div>
+
       <mat-divider></mat-divider>
-      <br>
-      Email: {{view_data.email}}
-      <br>
-      <br>
+      
+      <div class="data_view">
+        Email: {{view_data.email}}
+      </div>
+  
       <mat-divider></mat-divider>
-      <br>
-      Feedback: {{view_data.feedback}}
-      <br>
-      <br>
+
+      <div class="data_view">
+        Feedback: {{view_data.feedback}}
+      </div>
+ 
       <mat-divider></mat-divider>
-      <br>
-      Comments: <br>
-      {{view_data.comment}}
+ 
+      <div class="data_view">
+        Comments: <br>
+        {{view_data.comment}}
+      </div>
+
     </mat-card>
   </mat-grid-tile>
 

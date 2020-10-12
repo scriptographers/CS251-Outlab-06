@@ -1,60 +1,71 @@
 <mat-grid-list cols="10" rowHeight="100%">
 
   <mat-grid-tile colspan="6">
-      <mat-card>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <!-- Value: {{ form.value | json }} -->
-            <div>
-              <div class="mat-display-1">Feedback Form</div>
-              <mat-divider></mat-divider>
-        
-              <mat-form-field appearance="standard">
-                <mat-label>Name</mat-label>
-                <input matInput type="text" formControlName="name" placeholder="Name" />
-              </mat-form-field>
-        
-              <br>
-              <mat-divider></mat-divider>
-        
-              <mat-form-field appearance="standard">
-                <mat-label>Email</mat-label>
-                <input matInput type="email" formControlName="email" placeholder="Email" />
-                <mat-error *ngIf="form.controls.email.hasError('email')">
-                  Please enter a valid email address
-                </mat-error>
-              </mat-form-field>
-        
-              <br>
-              <mat-divider></mat-divider>
-              <br>
-        
-              <div style="margin-bottom: 0.6em;">Feedback:</div>
-              <mat-radio-group formControlName="feedback">
-                <mat-radio-button value="Great">Great</mat-radio-button>
-                <br>
-                <mat-radio-button value="Okay">Okay</mat-radio-button>
-                <br>
-                <mat-radio-button value="Not Good">Not Good</mat-radio-button>
-              </mat-radio-group>
-        
-              <br>
-              <br>
-              <mat-divider></mat-divider>
-              <br>
-        
-              <mat-form-field>
-                <mat-label>Comments</mat-label>
-                <textarea matInput formControlName="comment" placeholder="Comments"></textarea>
-              </mat-form-field>
-        
-              <br>
-              <mat-divider></mat-divider>
-              <br>
-        
-              <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
-            </div>
-        </form>
-      </mat-card>
+    <mat-card>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <!-- Value: {{ form.value | json }} -->
+        <div>
+          <div class="mat-display-1">Feedback Form</div>
+          <mat-divider></mat-divider>
+
+          <mat-form-field appearance="standard">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name" placeholder="Name" />
+            <mat-error *ngIf="form.controls.name.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+
+          </mat-form-field>
+
+          <br>
+          <mat-divider></mat-divider>
+
+          <mat-form-field appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Email" />
+            <mat-error *ngIf="form.controls.email.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
+              Please enter a <strong>valid</strong> email address
+            </mat-error>
+          </mat-form-field>
+
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+
+          <div style="margin-bottom: 0.6em;">Feedback:</div>
+          <mat-radio-group formControlName="feedback">
+            <mat-radio-button value="Great">Great</mat-radio-button>
+            <br>
+            <mat-radio-button value="Okay">Okay</mat-radio-button>
+            <br>
+            <mat-radio-button value="Not Good">Not Good</mat-radio-button>
+            <mat-error *ngIf="form.controls.feedback.hasError('required')">
+              Feedback is <strong>required</strong>
+            </mat-error>
+
+          </mat-radio-group>
+
+          <br>
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+
+          <mat-form-field>
+            <mat-label>Comments</mat-label>
+            <textarea matInput formControlName="comment" placeholder="Comments"></textarea>
+          </mat-form-field>
+
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+
+          <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
+        </div>
+      </form>
+    </mat-card>
   </mat-grid-tile>
 
   <mat-grid-tile colspan="4">
@@ -79,7 +90,7 @@
       <br>
       Comments: <br>
       {{view_data.comment}}
-    </mat-card>    
+    </mat-card>
   </mat-grid-tile>
 
 </mat-grid-list>

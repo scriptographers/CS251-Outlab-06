@@ -38,9 +38,9 @@ export class FormComponent implements OnInit {
       });
   }
 
-  openSnackBar(action: string) {
-    this.snackBar.open("Submission successful", action, {
-      duration: 2000,
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 4000,
     });
   }
 
@@ -52,11 +52,20 @@ export class FormComponent implements OnInit {
         email: this.form.value.email,
         feedback: this.form.value.feedback,
         comment: this.form.value.comment
-      }).subscribe(data => {
-        this.view_data = data; // population of view_data
-        this.subSuccess = true;
-        this.openSnackBar("Done");
-      });
+      }).subscribe(
+        data => {
+          if (data){
+            this.view_data = data; // population of view_data
+            this.subSuccess = true;
+            this.openSnackBar("Submission successful", "Done");
+          }
+          else{
+            // console.log(error);
+            this.subSuccess = false;
+            this.openSnackBar("Submission failed", "Try again");
+          }
+        }
+      );
     }
   }
 

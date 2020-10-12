@@ -37,11 +37,21 @@ export class FormService {
 
   // return the errors, if any, Reference: https://scotch.io/bar-talk/error-handling-with-angular-6-tips-and-best-practices192
   private handleError(error: any) {
-    let errorMessage = "";
-    if (error.error instanceof ErrorEvent)
-      errorMessage = `Message: ${error.error.message}`;
-    else
-      errorMessage = `Error Code: ${error.status} \| Message: ${error.message}`;
+    let errorMessage = "Message: ";
+    console.log(error.error)
+    if (error.error.name)
+      errorMessage += `Name field: ${error.error.name}, `;
+    if (error.error.email)
+      errorMessage += `Email field: ${error.error.email}, `;
+    if (error.error.feedback)
+      errorMessage += `Feedback field: ${error.error.feedback}, `;
+    if (error.error.comment)
+      errorMessage += `Comments field: ${error.error.comment}, `;
+
+    // else if (error.error instanceof ErrorEvent)
+    //   errorMessage = `Message: ${error.error.message}`;
+    // else
+    //   errorMessage = `Error Code: ${error.status} \| Message: ${error.message}`;
     return throwError(errorMessage);
   }
 }

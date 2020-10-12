@@ -54,16 +54,14 @@ export class FormComponent implements OnInit {
         comment: this.form.value.comment
       }).subscribe(
         data => {
-          if (data){
+          if (data) {
             this.view_data = data; // population of view_data
             this.subSuccess = true;
             this.openSnackBar("Submission successful", "Done");
+          } else {
+            this.subSuccess = true;
+            this.openSnackBar("Submission successful but data not returned", "Try again");
           }
-          // else{
-          //   // console.log(error);
-          //   this.subSuccess = false;
-          //   this.openSnackBar("Submission failed", "Try again");
-          // }
         },
         error => {
           console.log(error);

@@ -28,7 +28,8 @@
             <mat-error *ngIf="form.controls.email.hasError('required')">
               Email is <strong>required</strong>
             </mat-error>
-            <mat-error *ngIf="form.controls.email.hasError('email') || form.controls.email.hasError('pattern') && !form.controls.email.hasError('required')">
+            <mat-error
+              *ngIf="form.controls.email.hasError('email') || form.controls.email.hasError('pattern') && !form.controls.email.hasError('required')">
               Please enter a <strong>valid</strong> email address
             </mat-error>
           </mat-form-field>
@@ -84,19 +85,19 @@
       </div>
 
       <mat-divider></mat-divider>
-      
+
       <div class="data_view">
         Email: {{view_data.email}}
       </div>
-  
+
       <mat-divider></mat-divider>
 
       <div class="data_view">
         Feedback: {{view_data.feedback}}
       </div>
- 
+
       <mat-divider></mat-divider>
- 
+
       <div class="data_view">
         Comments: <br>
         {{view_data.comment}}

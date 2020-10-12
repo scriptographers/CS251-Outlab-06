@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 4000,
+      duration: 30000,
     });
   }
 
@@ -59,11 +59,16 @@ export class FormComponent implements OnInit {
             this.subSuccess = true;
             this.openSnackBar("Submission successful", "Done");
           }
-          else{
-            // console.log(error);
-            this.subSuccess = false;
-            this.openSnackBar("Submission failed", "Try again");
-          }
+          // else{
+          //   // console.log(error);
+          //   this.subSuccess = false;
+          //   this.openSnackBar("Submission failed", "Try again");
+          // }
+        },
+        error => {
+          console.log(error);
+          this.subSuccess = false;
+          this.openSnackBar("Submission failed due to the following error(s): " + error, "Try again");
         }
       );
     }

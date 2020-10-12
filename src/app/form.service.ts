@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Data } from './form-data';
@@ -23,7 +23,7 @@ export class FormService {
     return this.http.get<Data>(this.get_url)
       .pipe(
         // tap(_ => console.log('fetched data')),
-        catchError(this.handleError<Data>())
+        catchError(this.handleError)
       );
   }
 
@@ -31,20 +31,17 @@ export class FormService {
     return this.http.post<Data>(this.post_url, data, this.httpOptions)
       .pipe(
         // tap(_ => console.log('posted data')),
-        catchError(this.handleError<Data>())
+        catchError(this.handleError)
       )
   }
 
-  private handleError<T>(result?: T) {
-    
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.log(error); // log to console instead
-      // alert('Submission unsuccessful, try again.')
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  // return the errors, if any, Reference: https://scotch.io/bar-talk/error-handling-with-angular-6-tips-and-best-practices192
+  private handleError(error: any) {
+    let errorMessage = "";
+    if (error.error instanceof ErrorEvent)
+      errorMessage = `Message: ${error.error.message}`;
+    else
+      errorMessage = `Error Code: ${error.status} \| Message: ${error.message}`;
+    return throwError(errorMessage);
   }
 }

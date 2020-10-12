@@ -40,6 +40,7 @@ export class FormService {
 
       // TODO: send the error to remote logging infrastructure
       console.log(error); // log to console instead
+      alert('The form was not submitted successfully, try again.')
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

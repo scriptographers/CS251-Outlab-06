@@ -36,15 +36,17 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    // returns an Observable, asynchronously
-    this.fs.sendData({
-      name: this.form.value.name,
-      email: this.form.value.email,
-      feedback: this.form.value.feedback,
-      comment: this.form.value.comment
-    }).subscribe(data => {
-      this.view_data = data; // population of view_data
-    });
+    // returns an Observable, asynchronously if the form is valid
+    if (this.form.valid) {
+      this.fs.sendData({
+        name: this.form.value.name,
+        email: this.form.value.email,
+        feedback: this.form.value.feedback,
+        comment: this.form.value.comment
+      }).subscribe(data => {
+        this.view_data = data; // population of view_data
+      });
+    }
   }
 
 }

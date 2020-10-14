@@ -17,7 +17,7 @@
   margin: 1em;
 }
 
-.form-btn:hover{
+.form-btn:hover {
   @include shadow();
 }
 
@@ -26,6 +26,6 @@
   @extend .form-btn;
 }
 
-mat-toolbar{
+mat-toolbar {
   @include shadow();
 }

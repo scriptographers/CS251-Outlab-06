@@ -4,14 +4,14 @@
 }
 
 // SCSS Mixin that adds margins to elements
-@mixin margin($top: 0, $bottom: 0, $left: 0, $right: 0) {    
+@mixin margin($top: 0, $bottom: 0, $left: 0, $right: 0) {
   margin-top: $top;
   margin-bottom: $bottom;
   margin-left: $left;
   margin-right: $right;
 }
 
-mat-card:hover{
+mat-card:hover {
   @include shadow();
 }
 

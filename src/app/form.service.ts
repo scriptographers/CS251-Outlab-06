@@ -48,10 +48,6 @@ export class FormService {
     if (error.error.comment)
       errorMessage += `Comments field: ${error.error.comment}, `;
 
-    // else if (error.error instanceof ErrorEvent)
-    //   errorMessage = `Message: ${error.error.message}`;
-    // else
-    //   errorMessage = `Error Code: ${error.status} \| Message: ${error.message}`;
     return throwError(errorMessage);
   }
 }
